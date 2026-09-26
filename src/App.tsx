@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Sparkles, Clock, Settings, Plus, Layers } from 'lucide-react';
+import { Clock, Settings, Plus, Layers } from 'lucide-react';
 import { BusinessInputForm } from './components/marketing/BusinessInputForm';
 import { MarketingPlanView } from './components/marketing/MarketingPlanView';
 import { PlanHistoryView } from './components/marketing/PlanHistoryView';
@@ -44,17 +44,18 @@ export function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#FFFFFF] text-[#111111] flex flex-col font-sans selection:bg-[#111111] selection:text-white">
+    <div className="market-studio min-h-screen flex flex-col font-sans">
       {/* Top Header Navigation (Minimalist Monochrome) */}
-      <header className="sticky top-0 z-30 bg-white/95 backdrop-blur-md border-b border-[#E5E5E5]">
-        <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+      <header className="studio-header sticky top-0 z-30">
+        <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
           {/* Brand Logo */}
-          <div
+          <button
+            type="button" aria-label="MarketOS home"
             onClick={handleNewPlan}
             className="flex items-center gap-2.5 cursor-pointer select-none group"
           >
             <div className="w-8 h-8 rounded-xl bg-[#111111] flex items-center justify-center text-white font-extrabold text-sm shadow-xs group-hover:bg-[#222222] transition-colors">
-              M
+              m<span className="logo-dot">✳</span>
             </div>
             <div>
               <div className="flex items-center gap-2">
@@ -62,11 +63,11 @@ export function App() {
                   MarketOS
                 </span>
                 <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-[#F7F7F7] text-[#666666] border border-[#E5E5E5] hidden sm:inline">
-                  AI Marketing Dept
+                  THE MARKETING ATELIER
                 </span>
               </div>
             </div>
-          </div>
+          </button>
 
           {/* Clean Top Navigation Bar (Requirement 3) */}
           <nav className="flex items-center gap-1 sm:gap-2">
@@ -122,7 +123,7 @@ export function App() {
                   ? 'bg-[#111111] text-white shadow-xs'
                   : 'text-[#666666] hover:text-[#111111] hover:bg-[#F7F7F7]'
               }`}
-              title="Settings"
+              title="Settings" aria-label="Settings"
             >
               <Settings className="w-4 h-4" />
             </button>
@@ -131,7 +132,7 @@ export function App() {
       </header>
 
       {/* Main View Area */}
-      <main className="flex-1 bg-white">
+      <main className="flex-1">
         {activeTab === 'new' && (
           <BusinessInputForm
             onGenerate={handleGenerate}
@@ -161,8 +162,8 @@ export function App() {
       </main>
 
       {/* Minimal Footer */}
-      <footer className="border-t border-[#E5E5E5] bg-[#FFFFFF] py-4 text-center text-xs text-[#999999]">
-        MarketOS — AI Digital Marketing Department for Local Businesses
+      <footer className="studio-footer">
+        MarketOS © 2026 — Built for the wonderfully independent. ✳ Make your mark.
       </footer>
     </div>
   );

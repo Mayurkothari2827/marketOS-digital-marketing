@@ -7,6 +7,7 @@ import {
   ArrowRight,
   HelpCircle,
 } from 'lucide-react';
+import { StudioArtwork } from './StudioArtwork';
 import { BusinessInput } from '../../types/marketingPlan';
 
 interface BusinessInputFormProps {
@@ -103,44 +104,51 @@ export const BusinessInputForm: React.FC<BusinessInputFormProps> = ({
   };
 
   return (
-    <div className="max-w-2xl mx-auto py-6 sm:py-10 px-4">
-      {/* Editorial Monochrome Header */}
-      <div className="text-center mb-8 sm:mb-10">
-        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-semibold tracking-wider uppercase bg-[#F7F7F7] text-[#111111] border border-[#E5E5E5] mb-3">
-          <Sparkles className="w-3 h-3 text-[#111111]" />
-          AI Digital Marketing Department
+    <div className="studio-page">
+      <section className="studio-hero">
+        <div className="hero-copy">
+          <div className="studio-eyebrow"><span /> YOUR BUSINESS. A NEW PERSPECTIVE.</div>
+          <h1>Good businesses<br />deserve <em>bold</em><br /><span className="hero-last">marketing.<svg viewBox="0 0 360 20" aria-hidden="true"><path d="M3 13Q160 -5 350 9M20 19Q175 6 325 17" /></svg></span></h1>
+          <p>You bring the ambition. We bring the ideas.<br />Turn what makes your business special into<br className="desktop-break" /> marketing that feels unmistakably <em>you.</em></p>
+          <a className="hero-cta" href="#business-brief">Let’s make something great <ArrowRight size={18} /></a>
+          <div className="hero-note"><span className="hand-star">✳</span> A whole marketing department. One creative spark.</div>
         </div>
-        <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-[#111111] mb-2">
-          MarketOS
-        </h1>
-        <p className="text-base sm:text-lg font-medium text-[#111111]">
-          AI Marketing for Local Businesses
-        </p>
-        <p className="text-xs sm:text-sm text-[#666666] mt-1 italic">
-          &ldquo;Give us the business. We&apos;ll build the marketing.&rdquo;
-        </p>
-      </div>
-
+        <StudioArtwork />
+      </section>
+      <div className="studio-ribbon"><span>SMALL BUSINESS. BIG IDEAS.</span><span>✳</span><span>STRATEGY WITH SOUL</span><span>✳</span><span>CONTENT WITH CHARACTER</span><span>✳</span><span>MADE TO STAND OUT</span></div>
+      <section className="brief-layout" id="business-brief">
+        <aside className="brief-intro">
+          <span className="studio-eyebrow">01 / THE CREATIVE BRIEF</span>
+          <h2>Every great idea<br /> starts with<br /> <em>your story.</em></h2>
+          <p>A few details. A fresh canvas.<br />Tell us what you do, and we’ll connect the dots.</p>
+          <div className="deliverable-list">
+            <div><span>01</span><p><strong>A direction that’s yours</strong>Positioning & marketing strategy</p></div>
+            <div><span>02</span><p><strong>Ideas worth talking about</strong>Six tailored campaign concepts</p></div>
+            <div><span>03</span><p><strong>Ready for the real world</strong>Social copy, reels & visual creatives</p></div>
+          </div>
+          <div className="brief-stamp">A little AI.<br /><em>A lot of possibility.</em><span>↗</span></div>
+        </aside>
       {/* Main Input Form Card */}
       <form
         onSubmit={handleSubmit}
-        className="bg-white border border-[#E5E5E5] rounded-2xl p-6 sm:p-8 space-y-6 shadow-xs"
+        className="creative-form space-y-6"
       >
         <div className="pb-3 border-b border-[#E5E5E5]">
           <h2 className="text-base font-bold text-[#111111] tracking-tight">
-            Tell us about the business
+            Let’s meet your business.
           </h2>
           <p className="text-xs text-[#666666] mt-0.5">
-            Fill in the essential details. MarketOS autonomously determines positioning, content angles, campaigns, and creatives.
+            Start with the essentials. The best ideas begin with a little context.
           </p>
         </div>
 
         {/* Business Name */}
         <div>
-          <label className="block text-xs font-semibold text-[#111111] mb-1.5">
+          <label htmlFor="businessName" className="block text-xs font-semibold text-[#111111] mb-1.5">
             Business Name <span className="text-red-500">*</span>
           </label>
           <input
+            id="businessName"
             type="text"
             required
             value={businessName}
@@ -153,10 +161,11 @@ export const BusinessInputForm: React.FC<BusinessInputFormProps> = ({
         {/* Business Category & Location Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
-            <label className="block text-xs font-semibold text-[#111111] mb-1.5">
+            <label htmlFor="category" className="block text-xs font-semibold text-[#111111] mb-1.5">
               Business Category <span className="text-red-500">*</span>
             </label>
             <select
+            id="category"
               value={category}
               onChange={(e) => setCategory(e.target.value)}
               className="w-full bg-[#F7F7F7] border border-[#E5E5E5] rounded-xl px-3 py-2.5 text-xs sm:text-sm text-[#111111] focus:outline-none focus:border-[#111111] transition-colors"
@@ -179,10 +188,11 @@ export const BusinessInputForm: React.FC<BusinessInputFormProps> = ({
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-[#111111] mb-1.5">
+            <label htmlFor="location" className="block text-xs font-semibold text-[#111111] mb-1.5">
               Location (City, State) <span className="text-red-500">*</span>
             </label>
             <input
+            id="location"
               type="text"
               required
               value={location}
@@ -195,10 +205,11 @@ export const BusinessInputForm: React.FC<BusinessInputFormProps> = ({
 
         {/* What does the business sell? */}
         <div>
-          <label className="block text-xs font-semibold text-[#111111] mb-1.5">
+          <label htmlFor="products" className="block text-xs font-semibold text-[#111111] mb-1.5">
             What does the business sell? <span className="text-red-500">*</span>
           </label>
           <textarea
+            id="products"
             required
             rows={3}
             value={products}
@@ -210,10 +221,11 @@ export const BusinessInputForm: React.FC<BusinessInputFormProps> = ({
 
         {/* USP / Special */}
         <div>
-          <label className="block text-xs font-semibold text-[#111111] mb-1.5">
+          <label htmlFor="usp" className="block text-xs font-semibold text-[#111111] mb-1.5">
             What makes this business special? (USP) <span className="text-xs font-normal text-[#999999]">(Optional)</span>
           </label>
           <input
+            id="usp"
             type="text"
             value={usp}
             onChange={(e) => setUsp(e.target.value)}
@@ -224,10 +236,11 @@ export const BusinessInputForm: React.FC<BusinessInputFormProps> = ({
 
         {/* Current Offers */}
         <div>
-          <label className="block text-xs font-semibold text-[#111111] mb-1.5">
+          <label htmlFor="offers" className="block text-xs font-semibold text-[#111111] mb-1.5">
             Current Offers or Promotions <span className="text-xs font-normal text-[#999999]">(Optional)</span>
           </label>
           <input
+            id="offers"
             type="text"
             value={offers}
             onChange={(e) => setOffers(e.target.value)}
@@ -239,7 +252,7 @@ export const BusinessInputForm: React.FC<BusinessInputFormProps> = ({
         {/* Target Customers */}
         <div>
           <div className="flex items-center justify-between mb-1.5">
-            <label className="block text-xs font-semibold text-[#111111]">
+            <label htmlFor="targetCustomers" className="block text-xs font-semibold text-[#111111]">
               Target Customers <span className="text-xs font-normal text-[#999999]">(Optional)</span>
             </label>
             <span className="text-[10px] text-[#666666] flex items-center gap-1">
@@ -247,6 +260,7 @@ export const BusinessInputForm: React.FC<BusinessInputFormProps> = ({
             </span>
           </div>
           <input
+            id="targetCustomers"
             type="text"
             value={targetCustomers}
             onChange={(e) => setTargetCustomers(e.target.value)}
@@ -258,10 +272,11 @@ export const BusinessInputForm: React.FC<BusinessInputFormProps> = ({
         {/* Contact & Social Links */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
-            <label className="block text-xs font-semibold text-[#111111] mb-1.5">
+            <label htmlFor="phone" className="block text-xs font-semibold text-[#111111] mb-1.5">
               WhatsApp / Phone Number <span className="text-xs font-normal text-[#999999]">(Optional)</span>
             </label>
             <input
+            id="phone"
               type="text"
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
@@ -271,10 +286,11 @@ export const BusinessInputForm: React.FC<BusinessInputFormProps> = ({
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-[#111111] mb-1.5">
+            <label htmlFor="website" className="block text-xs font-semibold text-[#111111] mb-1.5">
               Website / Social Link <span className="text-xs font-normal text-[#999999]">(Optional)</span>
             </label>
             <input
+            id="website"
               type="text"
               value={website}
               onChange={(e) => setWebsite(e.target.value)}
@@ -367,7 +383,7 @@ export const BusinessInputForm: React.FC<BusinessInputFormProps> = ({
               </>
             ) : (
               <>
-                <span>Generate Marketing Plan</span>
+                <span>Create my marketing plan</span>
                 <ArrowRight className="w-4 h-4" />
               </>
             )}
@@ -377,6 +393,7 @@ export const BusinessInputForm: React.FC<BusinessInputFormProps> = ({
           </p>
         </div>
       </form>
+      </section>
     </div>
   );
 };
